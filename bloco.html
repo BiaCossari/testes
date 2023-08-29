@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento Mensal</title>
+</head>
+<body>
+    
+        <title>Planejamento Mensal</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
+    
+            h1 {
+                text-align: center;
+            }
+    
+            form {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+    
+            label, input {
+                display: block;
+                margin-bottom: 10px;
+            }
+    
+            input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+    
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Planejamento Mensal</h1>
+        <form id="noteForm">
+            <label for="month">Mês:</label>
+            <input type="text" id="month" name="month" required>
+    
+            <label for="content">Conteúdo:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+    
+            <input type="submit" value="Inserir Registro">
+        </form>
+    
+        <div id="displayNotes"></div>
+    
+        <script>
+            document.getElementById('noteForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+    
+                const month = document.getElementById('month').value;
+                const content = document.getElementById('content').value;
+    
+                const note = `<p><strong>${month}</strong><br>${content}</p>`;
+    
+                document.getElementById('displayNotes').insertAdjacentHTML('beforeend', note);
+    
+                // Limpar campos do formulário
+                document.getElementById('month').value = '';
+                document.getElementById('content').value = '';
+            });
+        </script>
+    </body>
+    </html>
+   

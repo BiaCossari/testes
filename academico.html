@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento Acadêmico</title>
+    <link rel="stylesheet" href="academico.css">
+</head>
+<body>
+    <div class="inicio">
+        <h2>Planejamento Acadêmico </h2>
+    </div>
+
+    <div class="fazer">
+        Notas (avaliação + trabalho + participação)<br>
+        Frequência 
+    </div>
+
+    <h1>Notas dos Alunos</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Avaliação</th>
+                <th>Trabalho</th>
+                <th>Participação</th>
+                <th>Média</th>
+            </tr>
+        </thead>
+        <tbody id="alunos">
+            <!-- Linhas de alunos serão adicionadas aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        const alunosTable = document.getElementById('alunos');
+
+        function calcularMedia(Avaliação, Trabalho, Participação) {
+            return (Avaliação + Trabalho + Participação) / 3;
+        }
+
+        function adicionarAluno(nome, Avaliação, Trabalho, Participação) {
+            const novaLinha = document.createElement('tr');
+            
+            const colunaNome = document.createElement('td');
+            colunaNome.textContent = nome;
+            novaLinha.appendChild(colunaNome);
+
+            const colunaAvaliação = document.createElement('td');
+            colunaAvaliação.textContent = Avaliação;
+            novaLinha.appendChild(colunaAvaliação);
+
+            const colunaTrabalho = document.createElement('td');
+            colunaTrabalho.textContent = Trabalho;
+            novaLinha.appendChild(colunaTrabalho);
+
+            const colunaParticipação = document.createElement('td');
+            colunaParticipação.textContent = Participação;
+            novaLinha.appendChild(colunaParticipação);
+
+            const media = calcularMedia(Avaliação, Trabalho, Participação);
+            const colunaMedia = document.createElement('td');
+            colunaMedia.textContent = media.toFixed(2);
+            novaLinha.appendChild(colunaMedia);
+
+            alunosTable.appendChild(novaLinha);
+        }
+
+        adicionarAluno('João', 8.5, 9.0, 7.5);
+        adicionarAluno('Maria', 7.0, 8.0, 6.5);
+        // Você pode adicionar mais alunos chamando a função adicionarAluno()
+    </script>
+
+<h1>Calculadora de Média</h1>
+<form id="calculator">
+    <label for="input1">Avaliação:</label>
+    <input type="number" id="input1" name="nota1" step="0.01" required><br>
+    
+    <label for="input2">Trabalho:</label>
+    <input type="number" id="input2" name="nota2" step="0.01" required><br>
+    
+    <label for="input3">Participação:</label>
+    <input type="number" id="input3" name="nota3" step="0.01" required><br>
+    
+    <input type="submit" value="Calcular Média">
+</form>
+
+<div id="resultado"></div>
+
+<script>
+    const form = document.getElementById('calculator');
+    const resultadoDiv = document.getElementById('resultado');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const nota1 = parseFloat(form.nota1.value);
+        const nota2 = parseFloat(form.nota2.value);
+        const nota3 = parseFloat(form.nota3.value);
+        
+        const media = (nota1 + nota2 + nota3) / 3;
+        
+        resultadoDiv.innerHTML = `A média é: ${media.toFixed(2)}`;
+    });
+</script>
+
+<title>Lista de Presença</title>
+</head>
+<body>
+    <h1>Lista de Presença</h1>
+    
+    <select id="mesSelecionado">
+        <option value="0">Janeiro</option>
+        <option value="1">Fevereiro</option>
+        <option value="2">Março</option>
+        <option value="3">Abril</option>
+        <option value="4">Maio</option>
+        <option value="5">Junho</option>
+        <option value="6">Julho</option>
+        <option value="7">Agosto</option>
+        <option value="8">Setembro</option>
+        <option value="9">Outubro</option>
+        <option value="10">Novembro</option>
+        <option value="11">Dezembro</option>
+    </select>
+    
+    <table id="presenca">
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Seg</th>
+                <th>Ter</th>
+                <th>Qua</th>
+                <th>Qui</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Alunos e presenças serão adicionados aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        const presencaTable = document.getElementById('presenca');
+        const mesSelecionado = document.getElementById('mesSelecionado');
+
+        const diasDaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+        function marcarPresenca(aluno, dia) {
+            aluno.presenca[dia] = !aluno.presenca[dia];
+            atualizarPresenca(aluno);
+        }
+
+        function atualizarPresenca(aluno) {
+            const row = aluno.row;
+            const cor = aluno.presenca[row * 5 + mesSelecionado.value] ? 'lightgreen' : 'lightcoral';
+            for (let col = 1; col <= 5; col++) {
+                aluno.presencaCells[col].style.backgroundColor = cor;
+            }
+        }
+
+        function adicionarAluno(nome) {
+            const novoAluno = {
+                nome: nome,
+                presenca: new Array(31 * 12).fill(false),
+                presencaCells: [],
+                row: presencaTable.querySelector('tbody').childElementCount
+            };
+
+            const newRow = document.createElement('tr');
+            const nomeCell = document.createElement('td');
+            nomeCell.textContent = nome;
+            newRow.appendChild(nomeCell);
+            
+            for (let col = 1; col <= 5; col++) {
+                const cell = document.createElement('td');
+                newRow.appendChild(cell);
+                novoAluno.presencaCells.push(cell);
+            }
+
+            presencaTable.querySelector('tbody').appendChild(newRow);
+            atualizarPresenca(novoAluno);
+
+            return novoAluno;
+        }
+
+        const aluno1 = adicionarAluno('João');
+        const aluno2 = adicionarAluno('Maria');
+        const aluno3 = adicionarAluno('Carlos');
+        // Você pode adicionar mais alunos chamando a função adicionarAluno()
+
+        mesSelecionado.addEventListener('change', function() {
+            const alunos = [aluno1, aluno2, aluno3]; // Adicione mais alunos aqui
+            
+            for (const aluno of alunos) {
+                atualizarPresenca(aluno);
+            }
+        });
+    </script>
+
+    <style>
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .presente {
+            background-color: lightgreen;
+        }
+    </style>
+</body>
+</html>
