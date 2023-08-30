@@ -1,104 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Virtual</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
 
-        h1 {
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
             text-align: center;
         }
-
-        .schedule {
-            display: grid;
-            grid-template-columns: 1fr repeat(5, 2fr);
-            grid-gap: 10px;
-            margin-top: 20px;
+        .matematica {
+            background-color: lightblue;
         }
-
-        .time {
-            font-weight: bold;
+        .portugues {
+            background-color: lightgreen;
         }
-
-        .subject {
-            border: 1px solid #ccc;
-            padding: 10px;
+        .ciencias {
+            background-color: rgb(255, 255, 86);
         }
-
-        .math {
-            background-color: #ffd700;
+        .historia {
+            background-color: lightpink;
         }
-
-        .portuguese {
-            background-color: #ff6347;
+        .ingles {
+            background-color: lightsalmon;
         }
-
-        .science {
-            background-color: #00ced1;
+        .educacao-fisica {
+            background-color: lightgray;
         }
     </style>
 </head>
 <body>
-    <h1>Agenda Virtual</h1>
-    <div class="schedule">
-        <div></div>
-        <div class="time">07:30 - 08:20</div>
-        <div class="time">08:30 - 09:20</div>
-        <div class="time">09:30 - 10:20</div>
-        <div class="time">10:30 - 11:20</div>
-        <div class="time">11:30 - 12:20</div>
-        
-        <div class="time">Segunda</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        
-        <div class="time">Terça</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-        
-        <div class="time">Quarta</div>
-        <div class="subject portuguese">Português</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        <div class="subject science">Ciências</div>
-        
-        <div class="time">Quinta</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        
-        <div class="time">Sexta</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-        <div class="subject portuguese">Português</div>
-        <div class="subject science">Ciências</div>
-        <div class="subject math">Matemática</div>
-    </div>
+    <h1>Agenda Escolar</h1>
+    <table>
+        <tr>
+            <th>Hora</th>
+            <th class="segunda">Segunda</th>
+            <th class="terca">Terça</th>
+            <th class="quarta">Quarta</th>
+            <th class="quinta">Quinta</th>
+            <th class="sexta">Sexta</th>
+        </tr>
+        <tr>
+            <td>7h30 - 8h30</td>
+            <td class="matematica">Matemática</td>
+            <td class="portugues">Português</td>
+            <td class="ciencias">Ciências</td>
+            <td class="historia">História</td>
+            <td class="educacao-fisica">Educação Física</td>
+        </tr>
+        <tr>
+            <td>8h30 - 9h30</td>
+            <td class="portugues">Português</td>
+            <td class="matematica">Matemática</td>
+            <td class="matematica">Matemática</td>
+            <td class="ingles">Inglês</td>
+            <td class="portugues">Português</td>
+        </tr>
+        <tr>
+            <td>9h30 - 10h00</td>
+            <td>Intervalo</td>
+            <td>Intervalo</td>
+            <td>Intervalo</td>
+            <td>Intervalo</td>
+            <td>Intervalo</td>
+        </tr>
+        <tr>
+            <td>10h00 - 11h00</td>
+            <td class="ciencias">Ciências</td>
+            <td class="ingles">Inglês</td>
+            <td class="portugues">Português</td>
+            <td class="matematica">Matemática</td>
+            <td class="ingles">Inglês</td>
+        </tr>
+        <tr>
+            <td>11h00 - 12h00</td>
+            <td class="historia">História</td>
+            <td class="educacao-fisica">Educação Física</td>
+            <td class="historia">História</td>
+            <td class="ciencias">Ciências</td>
+            <td class="matematica">Matemática</td>
+        </tr>
+    </table>
 </body>
 </html>
+
 
 </body>
 </html>
